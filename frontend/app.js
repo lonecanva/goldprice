@@ -5,7 +5,7 @@
  */
 
 const CONFIG = {
-  API_URL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL_HERE",
+  API_URL: "https://script.google.com/macros/s/AKfycbwPgAa6dcOhNuG7QSFPsFVNl9gAFxqWnPQ32wuEBRjyB4yfTEB0nroHLc4cqM-3A8Am/exec",
   REFRESH_SECONDS: 60,
   REQUEST_TIMEOUT_MS: 15000
 };
