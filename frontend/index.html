@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1120" />
+  <title>Market Watch</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">LIVE MARKET DASHBOARD</div>
+      <h1>Market Watch</h1>
+    </div>
+
+    <div class="status-wrap">
+      <span id="statusDot" class="status-dot"></span>
+      <span id="connectionStatus">Connecting…</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="hero-label">Multi-Asset Prices</div>
+        <div class="hero-title">Metals · Energy · Crypto · Forex</div>
+        <p>
+          Live/latest market prices delivered through your Google Apps Script backend.
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <button id="refreshBtn" class="btn" type="button">Refresh</button>
+        <div class="updated">
+          Last update<br />
+          <strong id="lastUpdated">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <nav id="filters" class="filters" aria-label="Market categories"></nav>
+
+    <section>
+      <div id="loading" class="notice">Loading market data…</div>
+      <div id="errorBox" class="notice error hidden"></div>
+      <div id="marketGrid" class="market-grid"></div>
+    </section>
+
+    <footer>
+      <span>Data source: configured backend provider</span>
+      <span>·</span>
+      <span>Auto refresh: <span id="refreshLabel">60</span>s</span>
+    </footer>
+  </main>
+
+  <template id="cardTemplate">
+    <article class="market-card">
+      <div class="card-head">
+        <div>
+          <div class="symbol"></div>
+          <div class="name"></div>
+        </div>
+        <div class="category-pill"></div>
+      </div>
+
+      <div class="price"></div>
+      <div class="change"></div>
+
+      <div class="stats">
+        <div>
+          <span>Open</span>
+          <strong class="open">—</strong>
+        </div>
+        <div>
+          <span>High</span>
+          <strong class="high">—</strong>
+        </div>
+        <div>
+          <span>Low</span>
+          <strong class="low">—</strong>
+        </div>
+        <div>
+          <span>Prev.</span>
+          <strong class="prev">—</strong>
+        </div>
+      </div>
+
+      <div class="card-error hidden"></div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
