@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Gold Price</title>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.title {
+  color: #fbbf24;
+  font-size: 24px;
+}
+
+.price {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.item {
+  background: #334155;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+button {
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  border-radius: 10px;
+
+  background: #fbbf24;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  margin-top: 20px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="title">
+🥇 GOLD PRICE
+</div>
+
+<div id="price" class="price">
+Loading...
+</div>
+
+<div class="info">
+
+<div class="item">
+Open
+<br>
+<strong id="open">-</strong>
+</div>
+
+<div class="item">
+High
+<br>
+<strong id="high">-</strong>
+</div>
+
+<div class="item">
+Low
+<br>
+<strong id="low">-</strong>
+</div>
+
+<div class="item">
+Change
+<br>
+<strong id="change">-</strong>
+</div>
+
+</div>
+
+
+<button onclick="loadGold()">
+Refresh Price
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+// ============================
+// YOUR GOOGLE APPS SCRIPT URL
+// ============================
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwPgAa6dcOhNuG7QSFPsFVNl9gAFxqWnPQ32wuEBRjyB4yfTEB0nroHLc4cqM-3A8Am/exec";
+
+
+// ============================
+// LOAD GOLD PRICE
+// ============================
+
+async function loadGold() {
+
+  document.getElementById("price").innerText =
+    "Loading...";
+
+  try {
+
+    const response =
+      await fetch(API_URL);
+
+    const result =
+      await response.json();
+
+    console.log(result);
+
+    if (!result.success) {
+      throw new Error("API Error");
+    }
+
+    const gold = result.data;
+
+    document.getElementById("price").innerText =
+      "$" + Number(gold.price).toLocaleString();
+
+    document.getElementById("open").innerText =
+      gold.open || "-";
+
+    document.getElementById("high").innerText =
+      gold.high || "-";
+
+    document.getElementById("low").innerText =
+      gold.low || "-";
+
+    document.getElementById("change").innerText =
+      gold.change || "-";
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    document.getElementById("price").innerText =
+      "Cannot load price";
+
+  }
+
+}
+
+
+loadGold();
+
+
+// AUTO REFRESH EVERY 60 SECONDS
+
+setInterval(
+  loadGold,
+  60000
+);
+
+</script>
+
+</body>
+
+</html>
