@@ -1,4 +1,4 @@
-const CONFIG={API_URL:"PASTE_YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL_HERE",REFRESH_SECONDS:60};
+const CONFIG={API_URL:"https://script.google.com/macros/s/AKfycbwPgAa6dcOhNuG7QSFPsFVNl9gAFxqWnPQ32wuEBRjyB4yfTEB0nroHLc4cqM-3A8Am/exec",REFRESH_SECONDS:60};
 let all=[],cat="All";
 const q=s=>document.querySelector(s);
 q("#refresh").onclick=()=>load(true);
