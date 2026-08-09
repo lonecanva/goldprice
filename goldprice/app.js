@@ -1,4 +1,4 @@
-const CONFIG={API_URL:'PASTE_YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL_HERE',AUTO_REFRESH_SECONDS:60};
+const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbwPgAa6dcOhNuG7QSFPsFVNl9gAFxqWnPQ32wuEBRjyB4yfTEB0nroHLc4cqM-3A8Am/exec',AUTO_REFRESH_SECONDS:60};
 let allData=[],activeCategory='All'; const $=id=>document.getElementById(id);
 $('refreshBtn').onclick=()=>loadPrices(true);
 function configured(){return CONFIG.API_URL.startsWith('https://script.google.com/macros/s/')&&CONFIG.API_URL.endsWith('/exec')}
